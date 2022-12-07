@@ -1,5 +1,6 @@
 #include <iostream>
-#include <utils/args.hpp>
+#include <src/args.hpp>
+#include <utils/Logger.hpp>
 
 int main(int argc, char** argv)
 {

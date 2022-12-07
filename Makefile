@@ -8,11 +8,12 @@ OUT = bin/breeze.exe
 
 files := ${wildcard src/*.cpp}
 files += ${wildcard utils/*.cpp}
+files += ${wildcard src/core/*.cpp}
 include = -I.
 
 ${APPNAME}:
 	${CC} ${include} -o ${OUT} ${files}
-	cd bin && breeze.exe
+	cd bin && breeze.exe -h
 
 build:
 	${CC} ${include} -o ${OUT} ${files}
