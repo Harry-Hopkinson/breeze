@@ -1,17 +1,23 @@
-#include <utils/System.hpp>
+#include <stdlib.h>
+#include <utils/SystemInstall.hpp>
 
-int linux(std::string argv) {
+int linuxInstall(std::string argv) {
   std::cout << "Installing " << argv << " on Linux" << std::endl;
     if (system(("sudo apt-get install -y " + argv).c_str()) != 0) {
-      std::cout << "Error installing " << argv << std::endl;
-      return 1;
+      std::cout << "get-install failed, trying pacman " << std::endl;
+      if (system(("sudo pacman -S " + argv).c_str()) == 0) {
+        return 0;
+      } else {
+        std::cout << "sudo pacman -S " + argv + " failed" << std::endl;
+        return 1;
+      }
     } else {
       system(("sudo apt-get install -y " + argv).c_str());
     }
   return 0;
 }
 
-int windows(std::string argv) {
+int windowsInstall(std::string argv) {
   std::cout << "Installing " << argv << " on Windows" << std::endl;
   // check for choco error
   if (system("choco -v") != 0) {
@@ -24,13 +30,12 @@ int windows(std::string argv) {
       std::cout << "Permission Denied" << std::endl;
       return 1;
     }
-    return 1;
   }
   system(("choco install " + argv).c_str());
   return 0;
 }
 
-int apple(std::string argv) {
+int appleInstall(std::string argv) {
   std::cout << "Installing " << argv << " on Mac" << std::endl;
   // check if brew error
   if (system("brew -v") != 0) {
