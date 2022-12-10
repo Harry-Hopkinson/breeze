@@ -9,6 +9,5 @@ int install(std::string argv) {
   #elif __APPLE__
     apple(argv);
   #endif
-
   return 0;
 }

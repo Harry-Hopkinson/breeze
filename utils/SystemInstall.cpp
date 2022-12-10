@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <utils/SystemInstall.hpp>
+#include <src/list/write.hpp>
 
 int linuxInstall(std::string argv) {
   std::cout << "Installing " << argv << " on Linux" << std::endl;
@@ -13,6 +14,7 @@ int linuxInstall(std::string argv) {
       }
     } else {
       system(("sudo apt-get install -y " + argv).c_str());
+      write(argv);
     }
   return 0;
 }
@@ -32,6 +34,7 @@ int windowsInstall(std::string argv) {
     }
   }
   system(("choco install " + argv).c_str());
+  write(argv);
   return 0;
 }
 
@@ -51,5 +54,6 @@ int appleInstall(std::string argv) {
     return 1;
   }
   system(("brew install " + argv).c_str());
+  write(argv);
   return 0; 
 }

@@ -9,6 +9,7 @@ OUT = bin/breeze.exe
 files := ${wildcard src/*.cpp}
 files += ${wildcard utils/*.cpp}
 files += ${wildcard src/core/*.cpp}
+files += ${wildcard src/list/*.cpp}
 include = -I.
 
 ${APPNAME}:
