@@ -1,15 +1,24 @@
 #include <src/list/write.hpp>
+#include <src/core/duplicateInstall.hpp>
 
 int write(std::string package) {
-  std::fstream file;
-  file.open("file-list.txt");
-  if (!file.is_open()) {
-    Logger::Error("Error: file-list.txt was not found");
-    return 1;
-  }
+  #ifdef _WIN32
+    char *username = std::getenv("USERNAME");
+    if (username == nullptr) {
+      std::cerr << "Error: Could not get username" << "\n";
+      return 1;
+    }
 
-  // read the file
-  file << package << "\n";
-  file.close();
+    std::string filePath = "C:\\Users\\" + std::string(username) + "\\file-list.txt";
+    // write the package to the file
+    std::ofstream outputFile(filePath, std::ios::app);
+    if (!outputFile.is_open()) {
+      std::cerr << "Failed to open the file: " << filePath << std::endl;
+      return 1;
+    }
+    outputFile << package << "\n";
+    outputFile.close();
+  #endif
   return 0;
 }
+

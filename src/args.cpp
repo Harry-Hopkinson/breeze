@@ -7,7 +7,8 @@ void print_usage() {
   std::cout << "Usage: breeze [options]\n"
             << "Options:\n"
             << "  -i, install   PACKAGE  Install the Specified Package\n"
-            << "  -u, uninstall PACKAGE  Uninstall the Specified Package\n";
+            << "  -u, uninstall PACKAGE  Uninstall the Specified Package\n"
+            << "  -h, --help             Show help messsage\n";
 }
 
 int args(int argc, char** argv) {

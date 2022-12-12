@@ -6,7 +6,7 @@ A C++ Package Manager That Makes Working With External Dependencies a Breeze!
 
 ```shell
 git clone https://github.com/Harry-Hopkinson/breeze.git
-make
+make build && make setup
 ```
 
 Add breeze to your environment variables by adding the path to the bin.
