@@ -1,4 +1,3 @@
-#include <stdlib.h>
 #include <utils/SystemUninstall.hpp>
 
 int linuxUninstall(std::string argv) {
@@ -19,11 +18,12 @@ int linuxUninstall(std::string argv) {
 
 int windowsUninstall(std::string argv) {
   std::cout << "Unistalling " << argv << " on Windows" << std::endl;
-  if (system("choco -v") != 0) {
-    std::cout << "Chocolatey is not installed, please install it first" << std::endl;
-    return 1;
-  }
-  system(("choco uninstall " + argv).c_str());
+  // if (system("choco -v") != 0) {
+  //   std::cout << "Chocolatey is not installed, please install it first" << std::endl;
+  //   return 1;
+  // }
+  // system(("choco uninstall " + argv).c_str());
+  removePackage(argv.c_str(), std::system("ver"));
   return 0;
 }
 

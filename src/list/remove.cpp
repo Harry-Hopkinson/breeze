@@ -1,6 +1,6 @@
 #include <src/list/remove.hpp>
 
-int remove(std::string package) {
+int removePackage(std::string package, int operatingSystem) {
   std::fstream file;
   file.open("file-list.txt");
   if (!file.is_open()) {
@@ -11,9 +11,9 @@ int remove(std::string package) {
   // scan the file for the package, and then remove it
   std::string line;
   while (std::getline(file, line)) {
-    if (line == package) {
-      // remove the line
-      package = "";
+    if (line != package) {
+      // write the line back to the file if it does not match the package
+      file << line << std::endl;
     }
   }
 

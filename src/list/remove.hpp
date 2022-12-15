@@ -3,4 +3,4 @@
 #include <string>
 #include <utils/Logger.hpp>
 
-int remove(std::string package);
+int removePackage(std::string package, int operatingSystem);
