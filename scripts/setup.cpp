@@ -1,4 +1,3 @@
-#include <iostream>
 #include <scripts/setup.hpp>
 
 int main() {

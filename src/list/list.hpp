@@ -1,4 +1,6 @@
-#include <iostream>
 #include <fstream>
+#include <cstdlib>
+#include <iostream>
+#include <string>
 
-void list();
+int list();

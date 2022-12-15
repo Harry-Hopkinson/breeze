@@ -2,12 +2,14 @@
 #include <utils/Logger.hpp>
 #include <src/core/install.hpp>
 #include <src/core/uninstall.hpp>
+#include <src/list/list.hpp>
 
 void print_usage() {
   std::cout << "Usage: breeze [options]\n"
             << "Options:\n"
             << "  -i, install   PACKAGE  Install the Specified Package\n"
             << "  -u, uninstall PACKAGE  Uninstall the Specified Package\n"
+            << "  -l, list               List all installed packages\n"
             << "  -h, --help             Show help messsage\n";
 }
 
@@ -37,6 +39,8 @@ int args(int argc, char** argv) {
         Logger::Error("No package specified");
         print_usage();
       }
+    } else if (arg == "-l" || arg == "--list" || arg == "list") {
+      list();
     }
     else {
       Logger::Error("Unknown argument: " + arg);
