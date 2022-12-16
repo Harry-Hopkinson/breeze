@@ -14,9 +14,11 @@ e.g E:\Programming\breeze\bin
 
 Now if you run the breeze -h command it should output...
 
+```
 Usage: breeze [options]
 Options:
 -i, --input-file FILE Specify the input file
 -o, --output-file FILE Specify the output file
 -v, --verbose Enable verbose mode
 -h, --help Print this message and exit
+```
