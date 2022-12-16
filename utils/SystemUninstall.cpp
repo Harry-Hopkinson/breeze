@@ -13,6 +13,7 @@ int linuxUninstall(std::string argv) {
     } else {
       system(("sudo apt-get remove -y " + argv).c_str());
     }
+  removePackage(argv.c_str());
   return 0;
 }
 
@@ -23,7 +24,7 @@ int windowsUninstall(std::string argv) {
   //   return 1;
   // }
   // system(("choco uninstall " + argv).c_str());
-  removePackage(argv.c_str(), std::system("ver"));
+  removePackage(argv.c_str());
   return 0;
 }
 
@@ -34,5 +35,6 @@ int appleUninstall(std::string argv) {
     return 1;
   }
   system(("brew uninstall " + argv).c_str());
+  removePackage(argv.c_str());
   return 0; 
 }
