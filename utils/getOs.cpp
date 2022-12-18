@@ -16,5 +16,6 @@ std::string getOperatingSystem() {
   std::getline(version, osVersion, '[');
   std::getline(version, osVersion, ']');
 
+
   return osName + " " + osVersion;
 }

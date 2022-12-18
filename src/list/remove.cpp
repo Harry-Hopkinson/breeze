@@ -1,34 +1,38 @@
 #include <src/list/remove.hpp>
+#include <stdlib.h>
 
 int removePackage(std::string package) {
   #ifdef _WIN32
-    std::ifstream file;
-    file.open("file-list.txt");
-    if (!file.is_open()) {
-      Logger::Error("Error: file-list.txt was not found");
-      return 1;
-    std::string line;
-    std::vector<std::string> lines;
-    while (std::getline(file, line)) {
-      lines.push_back(line);
-    }
-    file.close();
+  char *username = std::getenv("USERNAME");
+  if (username == nullptr) {
+    std::cerr << "Error: Could not get username" << "\n";
+    return 1;
+  }
 
-    std::string new_file_contents;
-    for (const auto& line : lines) {
-      if (line.find(package) == std::string::npos) {
-        new_file_contents += line + "\n";
-      }
-    }
+  std::string filePath = "C:\\Users\\" + std::string(username) + "\\file-list.txt";
+  // write the package to the file
+  std::ofstream outputFile(filePath, std::ios::app);
+  if (!outputFile.is_open()) {
+    std::cerr << "Failed to open the file: " << filePath << std::endl;
+    return 1;
+  }
 
-    std::ofstream temp_file("file-list.txt.tmp");
-    temp_file << new_file_contents;
-    temp_file.close();
+  // remove the package from the file
+  std::ifstream inputFile(filePath);
 
-    std::remove("file-list.txt");
-    std::rename("file-list.txt.tmp", "file-list.txt");
+  std::string line;
+  std::string newFile;
+  while (std::getline(inputFile, line)) {
+    if (line != package) {
+      newFile += line + " ";
+  }}
 
-    return 0;
+  outputFile << newFile;
+  outputFile.close();
+  inputFile.close();
+
+  return 0;
+
   #elif __linux__
     std::fstream file;
     file.open("file-list.txt");
@@ -69,4 +73,4 @@ int removePackage(std::string package) {
     return 0;
   #endif
   return 0;
-}}
+}
