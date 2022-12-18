@@ -16,7 +16,10 @@ int linuxInstall(std::string argv) {
       system(("sudo apt-get install -y " + argv).c_str());
       write(argv);
     }
-  return 0;
+  if (checkDupInstall(argv) == 0) {
+    write(argv);
+  }
+  return 1;
 }
 
 int windowsInstall(std::string argv) {
@@ -33,8 +36,8 @@ int windowsInstall(std::string argv) {
   //   return 1;
   //  }
   //}
-  // system(("choco install " + argv).c_str());
   if (checkDupInstall(argv) == 0) {
+    // system(("choco install " + argv).c_str());
     write(argv);
   }
   return 1;
@@ -55,7 +58,9 @@ int appleInstall(std::string argv) {
     }
     return 1;
   }
-  system(("brew install " + argv).c_str());
-  write(argv);
-  return 0; 
+  if (checkDupInstall(argv) == 0) {
+    system(("brew install " + argv).c_str());
+    write(argv);
+  }
+  return 1;
 }

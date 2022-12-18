@@ -1,5 +1,4 @@
 #include <src/list/remove.hpp>
-#include <stdlib.h>
 
 int removePackage(std::string package) {
   #ifdef _WIN32
@@ -8,30 +7,30 @@ int removePackage(std::string package) {
     std::cerr << "Error: Could not get username" << "\n";
     return 1;
   }
-
+  // Construct the path to the file using the username
   std::string filePath = "C:\\Users\\" + std::string(username) + "\\file-list.txt";
-  // write the package to the file
-  std::ofstream outputFile(filePath, std::ios::app);
-  if (!outputFile.is_open()) {
-    std::cerr << "Failed to open the file: " << filePath << std::endl;
-    return 1;
+  std::string tempPath = "C:\\Users\\" + std::string(username) + "\\file-list-temp.txt";
+  std::string line;
+
+  std::fstream file(filePath, std::ios::in | std::ios::out);
+  std::ofstream tempFile(tempPath);
+
+  while (std::getline(file, line)) {
+    if (line.find(package) == std::string::npos) {
+      tempFile << line << "\n";
+    }
   }
 
-  // remove the package from the file
-  std::ifstream inputFile(filePath);
+  file.close();
+  tempFile.close();
 
-  std::string line;
-  std::string newFile;
-  while (std::getline(inputFile, line)) {
-    if (line != package) {
-      newFile += line + " ";
-  }}
-
-  outputFile << newFile;
-  outputFile.close();
-  inputFile.close();
+  // delete the original file-list
+  // and replace with temporary one
+  remove(filePath.c_str());
+  rename(tempPath.c_str(), filePath.c_str());
 
   return 0;
+
 
   #elif __linux__
     std::fstream file;
