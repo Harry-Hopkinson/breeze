@@ -21,7 +21,7 @@ int checkDupInstall(std::string package) {
 
   while (std::getline(file, line)) {
     if (line == package) {
-      Logger::Error("You already have that package installed");
+      std::cerr << "Error: " << package << " already installed" << "\n";
       return 1;
     }
   }
