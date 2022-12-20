@@ -1,6 +1,7 @@
 #include <utils/SystemInstall.hpp>
 #include <src/list/write.hpp>
 #include <utils/CheckDupInstall.hpp>
+#include <utils/installchoco.hpp>
 
 int linuxInstall(std::string argv) {
   if (checkDupInstall(argv) == 1) {
@@ -25,19 +26,10 @@ int linuxInstall(std::string argv) {
 }
 
 int windowsInstall(std::string argv) {
-  // std::cout << "Installing " << argv << " on Windows" << std::endl;
-  // check for choco error
-  // if (system("choco -v") != 0) {
-  //  std::string permission;
-  //  std::cout << "Choco is not installed, do you want to install it? (y/n)" << std::endl;
-  //  std::cin >> permission;
-  //  if (permission == "y") {
-  //    system("powershell -Command \"iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))\"");
-  //  } else {
-  //    std::cout << "Permission Denied" << std::endl;
-  //   return 1;
-  //  }
-  //}
+  std::cout << "Installing " << argv << " on Windows" << std::endl;
+  if (system("choco -v") != 0) {
+    installChoco(); 
+  }
   if (checkDupInstall(argv) == 0) {
     // system(("choco install " + argv).c_str());
     write(argv);

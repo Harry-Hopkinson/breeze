@@ -3,11 +3,12 @@
 void print_usage() {
   std::cout << "Usage: breeze [options]\n"
             << "Options:\n"
-            << "  -i, install   PACKAGE  Install the Specified Package\n"
-            << "  -u, uninstall PACKAGE  Uninstall the Specified Package\n"
-            << " -up, update    PACKAGE  Update the Specified Package\n"
-            << "  -l, list               List all installed packages\n"
-            << "  -h, --help             Show help messsage\n";
+            << "  -i, install     PACKAGE  Install the Specified Package\n"
+            << "  -u, uninstall   PACKAGE  Uninstall the Specified Package\n"
+            << " -up, update      PACKAGE  Update the Specified Package\n"
+            << " -cu, checkUpdate          Check for Updates\n"
+            << "  -l, list                 List all installed packages\n"
+            << "  -h, --help               Show help messsage\n";
 }
 
 int args(int argc, char** argv) {
@@ -39,7 +40,7 @@ int args(int argc, char** argv) {
     } else if (arg == "-up" || arg == "--update" || arg == "update") {
       if (i + 1 < argc) {
         std::string package = argv[++i];
-        update(package);
+        update();
       } else {
         Logger::Error("No package specified");
         print_usage();
