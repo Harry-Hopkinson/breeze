@@ -3,9 +3,9 @@
 #include <utils/installchoco.hpp>
 
 int checkUpdate() {
-   std::cout << "Checking for updates..." << std::endl;
-   if (system("choco -v") != 0) {
-   installChoco();
+  std::cout << "Checking for updates..." << std::endl;
+  if (system("choco -v") != 0) {
+    installChoco();
   }
   system("choco outdated ");
   std::string permission;
@@ -15,8 +15,7 @@ int checkUpdate() {
     update();
   } else {
     std::cout << "Permission Denied" << std::endl;
-   return 1;   
+    return 1;   
   }
   return 0;
 }
-

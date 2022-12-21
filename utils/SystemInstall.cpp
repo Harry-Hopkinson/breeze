@@ -31,7 +31,7 @@ int windowsInstall(std::string argv) {
     installChoco(); 
   }
   if (checkDupInstall(argv) == 0) {
-    // system(("choco install " + argv).c_str());
+    system(("choco install " + argv).c_str());
     write(argv);
   }
   return 1;

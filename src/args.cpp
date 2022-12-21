@@ -5,7 +5,7 @@ void print_usage() {
             << "Options:\n"
             << "  -i, install     PACKAGE  Install the Specified Package\n"
             << "  -u, uninstall   PACKAGE  Uninstall the Specified Package\n"
-            << " -up, update      PACKAGE  Update the Specified Package\n"
+            << " -up, update               Update all packages\n"
             << " -cu, checkUpdate          Check for Updates\n"
             << "  -l, list                 List all installed packages\n"
             << "  -h, --help               Show help messsage\n";
@@ -38,14 +38,11 @@ int args(int argc, char** argv) {
         print_usage();
       }
     } else if (arg == "-up" || arg == "--update" || arg == "update") {
-      if (i + 1 < argc) {
-        std::string package = argv[++i];
-        update();
-      } else {
-        Logger::Error("No package specified");
-        print_usage();
-      }
-    } else if (arg == "-l" || arg == "--list" || arg == "list") {
+      update(); 
+    } else if (arg == "-cu" || arg == "--checkUpdate" || arg == "checkUpdate") {
+      checkUpdate();
+    }
+    else if (arg == "-l" || arg == "--list" || arg == "list") {
       list();
     }
     else {
