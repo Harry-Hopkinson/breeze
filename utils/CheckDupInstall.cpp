@@ -33,7 +33,7 @@ int checkDupInstall(std::string package) {
     return 1;
   }
   // Construct the path to the file using the username
-  std::string filePath = "C:\\Users\\" + std::string(username) + "\\file-list.txt";
+  std::string filePath = "/home/" + std::string(std::getenv("USER")) + "/file-list.txt";
   std::string line;
 
   // Open the file
