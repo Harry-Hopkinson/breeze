@@ -11,10 +11,20 @@ int removePackage(std::string package) {
   std::string filePath = "C:\\Users\\" + std::string(username) + "\\file-list.txt";
   std::string tempPath = "C:\\Users\\" + std::string(username) + "\\file-list-temp.txt";
   std::string line;
-
+  
   std::fstream file(filePath, std::ios::in | std::ios::out);
   std::ofstream tempFile(tempPath);
 
+  if (!file) {
+    // create the file if it doesn't exist
+    std::cerr << "Error: Could not open file-list.txt" << "\n";
+    std::cout << "Creating file-list.txt" << "\n";
+    std::ofstream outputFile(filePath, std::ios::out);
+    outputFile.close();
+    return 1;
+  }
+
+  
   while (std::getline(file, line)) {
     if (line.find(package) == std::string::npos) {
       tempFile << line << "\n";
@@ -46,6 +56,15 @@ int removePackage(std::string package) {
   std::fstream file(filePath, std::ios::in | std::ios::out);
   std::ofstream tempFile(tempPath);
 
+  if (!file) {
+    // create the file if it doesn't exist
+    std::cerr << "Error: Could not open file-list.txt" << "\n";
+    std::cout << "Creating file-list.txt" << "\n";
+    std::ofstream outputFile(filePath, std::ios::out);
+    outputFile.close();
+    return 1;
+  }
+
   while (std::getline(file, line)) {
     if (line.find(package) == std::string::npos) {
       tempFile << line << "\n";
@@ -74,6 +93,15 @@ int removePackage(std::string package) {
 
   std::fstream file(filePath, std::ios::in | std::ios::out);
   std::ofstream tempFile(tempPath);
+
+  if (!file) {
+    // create the file if it doesn't exist
+    std::cerr << "Error: Could not open file-list.txt" << "\n";
+    std::cout << "Creating file-list.txt" << "\n";
+    std::ofstream outputFile(filePath, std::ios::out);
+    outputFile.close();
+    return 1;
+  }
 
   while (std::getline(file, line)) {
     if (line.find(package) == std::string::npos) {

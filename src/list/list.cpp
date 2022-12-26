@@ -14,6 +14,15 @@ int list() {
     std::ifstream readFile;
     readFile.open(filePath);
 
+    if (!readFile) {
+      // create the file if it doesn't exist
+      std::cerr << "Error: Could not open file-list.txt" << "\n";
+      std::cout << "Creating file-list.txt" << "\n";
+      std::ofstream outputFile(filePath, std::ios::out);
+      outputFile.close();
+      return 1;
+    }
+
     std::string line;
 
     for (std::string line; std::getline(readFile, line);) {
@@ -40,6 +49,13 @@ int list() {
     std::ifstream readFile;
     readFile.open(filePath);
 
+    if (!readFile) {
+      // create the file if it doesn't exist
+      std::ofstream outputFile(filePath, std::ios::out);
+      outputFile.close();
+      return 1;
+    }
+
     std::string line;
 
     for (std::string line; std::getline(readFile, line);) {
@@ -65,6 +81,13 @@ int list() {
 
     std::ifstream readFile;
     readFile.open(filePath);
+
+    if (!readFile) {
+      // create the file if it doesn't exist
+      std::ofstream outputFile(filePath, std::ios::out);
+      outputFile.close();
+      return 1;
+    }
 
     std::string line;
 

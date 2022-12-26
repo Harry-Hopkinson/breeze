@@ -8,15 +8,7 @@ int checkUpdate() {
     installChoco();
   } else {
     system("choco outdated ");
-    std::string permission;
-    std::cout << "Do you want to update? (y/n)" << std::endl;
-    std::cin >> permission;
-    if (permission == "y") {
-      update();
-    } else {
-      std::cout << "Permission Denied" << std::endl;
-      return 1;   
-    }
+    update(); 
   }
   return 0;
 }

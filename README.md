@@ -6,7 +6,7 @@ A C++ Package Manager That Makes Working With External Dependencies a Breeze!
 
 ```shell
 git clone https://github.com/Harry-Hopkinson/breeze.git
-make build && make setup
+make build
 ```
 
 Add breeze to your environment variables by adding the path to the bin.
@@ -17,8 +17,10 @@ Now if you run the breeze -h command it should output...
 ```
 Usage: breeze [options]
 Options:
--i, --input-file FILE Specify the input file
--o, --output-file FILE Specify the output file
--v, --verbose Enable verbose mode
--h, --help Print this message and exit
+  -i, install     PACKAGE  Install the Specified Package
+  -u, uninstall   PACKAGE  Uninstall the Specified Package
+ -up, update               Update all packages
+ -cu, checkUpdate          Check for Updates
+  -l, list                 List all installed packages
+  -h, --help               Show help messsage
 ```
