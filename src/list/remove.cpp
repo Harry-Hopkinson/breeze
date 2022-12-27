@@ -41,7 +41,6 @@ int removePackage(std::string package) {
 
   return 0;
 
-
   #elif __linux__
   char *username = std::getenv("USERNAME");
   if (username == nullptr) {

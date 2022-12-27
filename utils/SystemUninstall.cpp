@@ -1,5 +1,6 @@
 #include <utils/SystemUninstall.hpp>
-#include <utils/installchoco.hpp>
+#include <utils/installChoco.hpp>
+#include <utils/installBrew.hpp>
 
 int linuxUninstall(std::string argv) {
   std::cout << "Uninstalling " << argv << " on Linux" << std::endl;
@@ -22,6 +23,7 @@ int windowsUninstall(std::string argv) {
   std::cout << "Unistalling " << argv << " on Windows" << std::endl;
   if (system("choco -v") != 0) {
    installChoco();
+   return 1;
   }
   system(("choco uninstall " + argv).c_str());
   removePackage(argv.c_str());
@@ -31,7 +33,7 @@ int windowsUninstall(std::string argv) {
 int appleUninstall(std::string argv) {
   std::cout << "Uninstalling " << argv << " on Mac" << std::endl;
   if (system("brew -v") != 0) {
-    std::cout << "Brew is not installed, please install it first" << std::endl;
+    installBrew();
     return 1;
   }
   system(("brew uninstall " + argv).c_str());

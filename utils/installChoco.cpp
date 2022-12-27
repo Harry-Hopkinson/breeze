@@ -1,4 +1,4 @@
-#include <utils/installchoco.hpp>
+#include <utils/installChoco.hpp>
 
 int installChoco() {
   std::string permission;

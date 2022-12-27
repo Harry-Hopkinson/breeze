@@ -9,6 +9,5 @@ int uninstall(std::string argv) {
   #elif __APPLE__
     appleUninstall(argv);
   #endif
-
   return 0;
 }
