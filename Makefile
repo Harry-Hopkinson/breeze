@@ -14,7 +14,7 @@ include = -I.
 
 ${APPNAME}:
 	${CC} ${include} -o ${OUT} ${files}
-	cd bin && breeze.exe -h
+	cd bin && breeze.exe
 
 build:
 	${CC} ${include} -o ${OUT} ${files}

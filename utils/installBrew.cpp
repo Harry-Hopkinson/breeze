@@ -1,4 +1,3 @@
-#include <stdlib.h>
 #include <utils/installBrew.hpp>
 
 int installBrew() {
