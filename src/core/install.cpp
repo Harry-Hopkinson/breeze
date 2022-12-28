@@ -3,11 +3,11 @@
 
 int install(std::string argv) {
   #ifdef __linux__
-    linux(argv);
+    linuxInstall(argv);
   #elif _WIN32
     windowsInstall(argv);
   #elif __APPLE__
-    apple(argv);
+    appleInstall(argv);
   #endif
   return 0;
 }
