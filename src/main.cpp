@@ -1,4 +1,3 @@
-#include <iostream>
 #include <src/args.hpp>
 #include <utils/Logger.hpp>
 

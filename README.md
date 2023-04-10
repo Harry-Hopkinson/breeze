@@ -6,11 +6,11 @@ A C++ Package Manager That Makes Working With External Dependencies a Breeze!
 
 ```shell
 git clone https://github.com/Harry-Hopkinson/breeze.git
-make build
+cmake -S . -B build && cmake --build build
 ```
 
 Add breeze to your environment variables by adding the path to the bin.
-e.g E:\Programming\breeze\bin
+e.g E:\Programming\breeze\build
 
 Now if you run the breeze -h command it should output...
 
