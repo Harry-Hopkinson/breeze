@@ -12,7 +12,6 @@ void print_usage() {
 }
 
 int args(int argc, char** argv) {
-  // check if there are no args
   if (argc == 1) {
     print_usage();
     return 0;
